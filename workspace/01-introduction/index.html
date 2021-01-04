@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>JQuery</title>
+    </head>
+    <body>
+        <div id="output">
+            Output 2 content
+        </div>
+        <div class="one">class one</div>
+        <div class="one">class one</div>
+        <div class="one">class one</div>
+        <div class="one">class one</div>
+        <div class="one">class one</div>
+        <div class="one">class one</div>
+        
+        <input type="text" value="Hello world" id="inputText">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            /*
+                One of the first things that we want to do with a query is that 
+                we want to make sure that the document or the DOM is ready, 
+                it's all loaded before we try to do some functionality.
+                
+                $(document).ready() allows us to run our query once our document has finished loading.
+            */
+            $(document).ready(function() {
+                // =================================
+                // UPDATE CONTENT
+                // =================================
+                /*
+                // access element by ID
+                $('#output').html('updated content');                
+                $('#inputText').val('updated value'); // update value of input textbox
+                
+                // access element by class
+                $('.one').html('<b>updated one class</b>'); // update as html
+                $('.one').text('<b>updated one class</b>'); // update as plain text
+                */
+                // =================================
+                
+                // =================================
+                // ACCESS CONTENT
+                // =================================
+                var textValue = $('#inputText').val();
+                console.log(textValue);
+
+            })
+        </script>
+    </body>
+</html>
