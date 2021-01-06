@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>jQuery Course</title>
+    <style>
+        li:nth-child(3) {
+            color: blue;
+        }
+        
+        #grandparent {
+            
+        }
+        
+        .myClassa {
+            background-color: beige;
+            color: cornflowerblue;
+        }
+        
+        .myClassb {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="output">Output2 Content</div>
+    <div class="one"><a href="#" id="myClicker">Click me</a> Some content</div>
+    <img id="myimage" src="http://lorempixel.com/200/200" />
+    <div id="grandparent">
+        <div class="parentone">
+            <div class="childone">
+                <p class="one myClassb">Child #1</p>
+            </div>
+            <div class="childtwo">
+                <p class="two myClassb">Child #2</p>
+            </div>
+            <div class="childthree">
+                <p class="one myClassb">Child #3</p>
+            </div>
+            <p>I'm a paragraph</p>
+        </div>
+    </div>
+    <input type="text" value="helloworld" id="myInput">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+           
+            
+            // =================================
+            // SIMPLE EFFECTS AND CALLBACKS
+            // =================================
+            /*
+            $('.childone').click(function(){
+                // $('#myimage').hide();    // hide
+                $('#myimage').hide(2000);   // hide with animations
+            })
+            
+            $('.childtwo').click(function(){
+                // $('#myimage').show();    // show
+                $('#myimage').show(2000);   // show with animations
+            })
+            
+            $('.childthree').click(function(){
+                // $('#myimage').toggle();  // toggle
+                // $('#myimage').toggle(2000); // toggle with animations
+                $('#myimage').toggle(2000, myFunction); // toggle with animations and callback
+            })
+            
+            function myFunction() {
+                $('#output').html('Working!!!');
+            }
+            */
+            
+            
+            
+            // =================================
+            // EFFECTS
+            // =================================
+            /*
+            $('.childone').click(function(){
+                $('#myimage').fadeOut(2000);   // fade out with animations
+            })
+            
+            $('.childtwo').click(function(){
+                $('#myimage').fadeTo(2000, 0.5);   // fade to with animations
+            })
+            
+            $('#myimage').click(function(){
+                // sliding up and down
+                $('#grandparent').slideToggle('slow', function(){
+                    $('#output').html('SLIDE TOGGLE');
+                })
+                // we can also use slideUp() and slideDown() functions, but remember that 
+                // for slideUp(), the element should be visible first, and
+                // for slideDown(). the element should NOT be visible first (display: none)
+            })
+            */
+            
+            
+            
+            // =================================
+            // ANIMATE WITH JQUERY
+            // =================================
+            /*
+                If you want to move around with animate,
+                make sure you change your CSS of that element to be position: absolute.
+            */
+            $('#myimage').css({
+                "position": "absolute",
+                "top": "250px"
+            });
+            
+            $('.childone').click(function(){
+                // animate without span
+                /*
+                $('#myimage').animate({
+                    opacity: 0.5,
+                    left: "200px"
+                    //left: "+=20px" // to move by 20px on each click of childone div
+                });
+                */
+                
+                // animate with timespan
+                /*
+                $('#myimage').animate({
+                    opacity: 0.5,
+                    left: "200px"
+                    //left: "+=20px" // to move by 20px on each click of childone div
+                }, 2000);
+                */
+                
+                // animate with timespan and a callback where we could also do another animations, etc.              
+                $('#myimage').animate({
+                    opacity: 0.5,
+                    left: "200px"
+                    //left: "+=20px" // to move by 20px on each click of childone div
+                }, 2000, myFunction);                
+                
+                function myFunction() {
+                    $('#output').html('Working!!!');
+                }
+                
+            })
+            
+
+        })
+    </script>
+</body>
+
+</html>
