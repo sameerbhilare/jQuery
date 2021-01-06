@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>jQuery Course</title>
+    <style>
+        li:nth-child(3) {
+            color: blue;
+        }
+        
+        .myClassA {
+            background-color: beige;
+            color: cornflowerblue;
+        }
+        
+        .myClassB {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="output">Output2 Content</div>
+    <div class="one"><a href="#" id="myClicker">Click me</a> Some content</div>
+    <img id="myImage" src="https://source.unsplash.com/random/200x200">
+    
+    <p id="grandparent">
+        <div class="parentone">
+            <div class="childone">
+                <p class="one">Child #1</p>   
+            </div>
+            <div class="childtwo">
+                <p class="two">Child #2</p>
+            </div>
+            <div class="childthree">
+                <p class="one">Child #3</p>
+            </div>
+            <div class="childfour">
+                <p class="four">Child #4</p>
+            </div>
+            <div class="childfive">
+                <p class="five">Child #4</p>
+            </div>
+            <p>I'm a paragraph</p>
+        </div>
+    </p>
+    <input type="text" value="helloworld" id="myInput">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            
+            // =================================
+            // JQUERY AND CSS
+            // =================================
+            /*
+            $('p').mouseover(function(){
+                // setting multiple css properties
+                $(this).css({
+                    'background-color': 'yellow',
+                    'color': 'red'
+                })
+            })
+            
+            $('p').mouseout(function(){
+                // setting multiple css properties
+                $(this).css({
+                    'background-color': 'white',
+                    'color': 'black'
+                    })
+            })
+            
+            // setting single css style 
+            $('.parentone').children().first().css('color', "red");
+            */
+            
+            
+            // =================================
+            // WORKING WITH CLASSES
+            // =================================
+            /*
+            $('p').click(function(){
+                if ($(this).hasClass('myClassA')) {  // has class
+                   $(this).removeClass('myClassA')   // remove class
+                   $(this).addClass('myClassB')      // add class
+
+                } else {                    
+                   $(this).removeClass('myClassB')   // remove class
+                   $(this).addClass('myClassA')      // add class
+                }
+            })
+            */
+            
+            
+            
+            // =================================
+            // TOGGLING CLASSES - add if not present, remove if present
+            // =================================
+            /*
+            $('p').click(function(){
+                
+               $(this).toggleClass('myClassA')   // toggle class
+               
+            })
+            */
+            
+            
+            
+            // =================================
+            // WORKING WITH ATTRIBUTES
+            // =================================
+            /*
+            $('#myImage').click(function(){
+                // get 'src' attribute of img tag
+                var imageSource = $(this).attr('src'); 
+                $('#output').html(imageSource);
+                
+                // setting src attribute of img tab
+                $(this).attr('src', 'https://source.unsplash.com/random/150x150');                
+            })
+            */
+            
+        })
+    </script>
+</body>
+
+</html>
