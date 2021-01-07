@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>jQuery Course</title>
+    <style>
+        div {
+            margin: 20px;
+        }
+        
+        .one {
+            border: 1px solid black;
+            display: inline-block;
+            padding: 5px;
+            background-color: azure;
+        }
+        
+        .highlight {
+            background-color: red;
+        }
+        
+        #output {
+            background-color: yellow;
+            border: 2px solid black;
+            padding: 10px;
+        }
+    </style>
+    <!-- jquery ui CSS -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+</head>
+
+<body>
+    <div id="output">Output1 Content</div>
+
+    <div class="ui-widget">
+        <label for="searcher">Search Me:</label>
+        <input id="searcher">
+    </div>
+
+    <!-- maintain this order - jquery first then jquery-ui -->
+    <!-- jquery lib -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- jquery ui lib -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    
+    <script>
+        $(document).ready(function () {
+            
+                        
+            // =================================
+            // AUTOCOMPLETE USING DUMMY DATA
+            // =================================
+            /*
+            var sourceData = ['abc', 'pqr', 'xyz'];
+            
+            $('#searcher').autocomplete({
+                source: sourceData,
+                multiple: true,
+                mustMatch: false
+            })
+            */
+            
+            
+                        
+            // =================================
+            // AUTOCOMPLETE WITH DATA FROM API
+            // =================================
+            var sourceData = ['abc', 'pqr', 'xyz'];
+            
+            $('#searcher').autocomplete({
+                source: sourceData,
+                multiple: true,
+                mustMatch: false
+            })
+            
+            $('#searcher').keyup(function(){
+                var searchText = $(this).val();
+                sourceData.length = 0; // reset the sourceData array
+                $.ajax({
+                    url: 'https://randomuser.me/api?results=10',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        console.log(data);
+                        $.each(data.results, function(k,v) {
+                            // console.log(k, v);                            
+                            sourceData.push(v.name.first);
+                        })
+                        console.log(sourceData);
+                    }
+                })
+            })
+            
+        });
+    </script>
+</body>
+
+</html>
