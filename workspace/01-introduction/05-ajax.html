@@ -1,0 +1,139 @@
+
+
+<!--
+ =================================================================================
+
+ To test the AJAX related code.
+ 1. Put both 05-ajax.html and 05-ajax.php files under C:\xampp\htdocs\jquery-ajax
+ 2. Start xampp server
+ 3. hit http://localhost/jquery-ajax/05-ajax.html
+ 4. You can also run the php http://localhost/jquery-ajax/05-ajax.php
+
+ =================================================================================
+-->
+
+<!doctype html>
+<html>
+
+<head>
+    <title>jQuery Course</title>
+</head>
+
+<body>
+    <div id="output">GET1 Content</div>
+    <div id="output2">GET2 Content</div>
+    <div id="output3">POST1 Content</div>
+    <div id="output4">POST2 Content</div>
+    <div id="output5">AJAX Content</div>
+    <div class="one"><a href="#" id="myClicker">Click me</a> Some content</div>
+    <input type="text" value="hello world" id="myA">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            
+            
+            // =================================
+            // SIMPLE AJAX LOAD
+            // =================================
+            /*
+            $('#myClicker').click(function(e){
+                e.preventDefault();
+                $('#output').load('05-ajax.php'); // load
+            });
+            */
+            
+            
+            // =================================
+            // AJAX GET AND SEND DATA JQEURY METHODS
+            // =================================
+            $('#myClicker').click(function(e){
+                e.preventDefault();
+                
+                // GET data - without parameters and a callback
+                /*
+                $.get('05-ajax.php', function(data) {
+                    console.log(data);
+                    $('#output').html(data);
+                })
+                */
+                
+                
+                /*
+                // GET data - with parameters and a callback                
+                var inputData = {
+                    name: $('#myA').val()
+                }
+                
+                $.get('05-ajax.php', inputData, function(data) {
+                    console.log(data);
+                    $('#output').html(data);
+                })
+                
+                // GET JSON data
+                var url = 'https://reqres.in/api/users/2';
+                $.getJSON(url, function(data) {
+                    console.log(data);
+                    $('#output2').html(data.data.first_name + ' ' + data.data.last_name);
+                })
+                */
+                
+                
+                // =================================
+                // AJAX POST
+                // =================================
+                // POST data - without parameters and a callback
+                /*
+                $.post('05-ajax.php', function(data) {
+                    console.log(data);
+                    $('#output3').html(data);
+                })
+                */
+                
+                // POST data - with parameters and a callback
+                /*
+                var inputData = {
+                    name: $('#myA').val()
+                }
+                $.post('05-ajax.php', inputData, function(data, status, xhr) {
+                    console.log(data);
+                    console.log(status);
+                    console.log(xhr);
+                    $('#output4').html(data);
+                })
+                */
+                
+                
+                
+                // =================================
+                // AJAX 
+                // =================================
+                var inputData = {
+                    name: $('#myA').val()
+                }
+                
+                $.ajax({
+                    url: '05-ajax.php',
+                    type: 'GET',
+                    data: inputData,
+                    // callback for success condition
+                    success: function(data,success,xhr) {
+                        console.log(data);
+                        console.log(status);
+                        console.log(xhr);
+                        $('#output5').html(data);
+                    },
+                    // callback for error condition
+                    error: function(data,success,xhr) {
+                        console.log(data);
+                        console.log(status);
+                        console.log(xhr);
+                        $('#output5').html(data);
+                    }
+                })
+                
+            });
+        })
+    </script>
+</body>
+
+</html>
